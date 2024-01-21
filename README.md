@@ -1,14 +1,15 @@
-# Welcome to your CDK TypeScript project
+# AWS CDK Prototype: Importing text files in NodejsFunctions
 
-This is a blank project for CDK development with TypeScript.
+This AWS CDK stack, defined in `aws-cdk-proto-lambda-html-load-stack.ts`, sets up a Lambda function that serves HTML content. The Lambda function is created using the `NodejsFunction` construct with a custom bundling option to include `.html` files as text. It also exposes a public URL through the `FunctionUrl` construct with no authentication required, allowing easy access to the function's response. The URL of the Lambda function is exposed as a CloudFormation stack output.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This works fine with the IDE intellisense:
 
-## Useful commands
+![IDE Screenshot](./docs/ide.png)
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+The HTML file is included in the synthesized stack:
+
+![CDK Output](./docs/synth.png)
+
+And, once deployed, the HTML file is indeed loaded and returned by the Lambda:
+
+![Runtime Results](./docs/runtime.png)
